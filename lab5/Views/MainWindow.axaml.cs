@@ -11,28 +11,28 @@ namespace lab5.Views
             InitializeComponent();
             this.FindControl<Button>("OpenFileButton").Click += async delegate
             {
-                var taskPathIn = new OpenFileDialog()
+                var taskPath = new OpenFileDialog()
                 {
                     Title = "Open file",
                     Filters = null
                 }.ShowAsync((Window)this.VisualRoot);
 
-                string[]? path = await taskPathIn;
-                var contex = this.DataContext as MainWindowViewModel;
-                if (path != null) contex.SetPath = string.Join(@"\", path);
+                string[]? path = await taskPath;
+                var context = this.DataContext as MainWindowViewModel;
+                if (path != null) context.SetPath = string.Join(@"\", path);
             };
 
             this.FindControl<Button>("SaveFileButton").Click += async delegate
             {
-                var taskPathOut = new OpenFileDialog()
+                var taskPath = new OpenFileDialog()
                 {
                     Title = "Choose file",
                     Filters = null
                 }.ShowAsync((Window)this.VisualRoot);
 
-                string[]? path2 = await taskPathOut;
-                var contex = this.DataContext as MainWindowViewModel;
-                if (path2 != null) contex.GetPath = string.Join(@"\", path2);
+                string[]? path = await taskPath;
+                var context = this.DataContext as MainWindowViewModel;
+                if (path != null) context.GetPath = string.Join(@"\", path);
             };
 
 
